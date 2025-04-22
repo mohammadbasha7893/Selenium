@@ -1,31 +1,113 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
+
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.seleniumhq.selenium</groupId>
+    <groupId>org.example</groupId>
+
     <artifactId>Selenium</artifactId>
+
     <version>1.0-SNAPSHOT</version>
 
     <dependencies>
 
+        <!-- Selenium -->
+
+        <dependency>
+
+            <groupId>org.seleniumhg.selenium</groupId>
+
+            <artifactId>selenium-java</artifactId>
+
+            <version>4.18.1</version>
+
+        </dependency>
+
+        <!-- WebDriverManager -->
+
+        <dependency>
+
+            <groupId>io.github.bonigarcia</groupId>
+
+            <artifactId>webdrivermanager</artifactId>
+
+            <version>5.6.3</version>
+
+        </dependency>
+
+        <!-- Apache POI (Excel) -->
+
+        <dependency>
+
+            <groupId>org.apache.poi</groupId>
+
+            <artifactId>poi-goxml</artifactId>
+
+            <version>5.2.5</version>
+
+        </dependency>
+        <!-- Extent Reports -->
+
+        <dependency>
+
+            <groupId>com.aventstack</groupId>
+
+            <artifactId>extentreports</artifactId>
+
+            <version>5.1.1</version>
+
+        </dependency>
+
+        <!-- JSON parsing -->
+
+        <dependency>
+
+            <groupId>org.ison</groupId>
+
+            <artifactId>ison</artifactId>
+
+            <version>20240303</version>
+
+        </dependency>
+
+        <dependency>
+
+            <groupId>org.json</groupId>
+
+            <artifactId>json</artifactId>
+
+            <version>20211205</version>
+
+        </dependency>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-java</artifactId>
+            <artifactId>selenium-api</artifactId>
             <version>4.18.1</version>
         </dependency>
         <dependency>
-            <groupId>org.json</groupId>
-            <artifactId>json</artifactId>
-            <version>20240303</version>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-chrome-driver</artifactId>
+            <version>4.18.1</version>
         </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-support</artifactId>
+            <version>4.18.1</version>
+        </dependency>
+
     </dependencies>
 
     <properties>
-        <maven.compiler.source>21</maven.compiler.source>
-        <maven.compiler.target>21</maven.compiler.target>
+
+        <maven..compiler.source>23</maven..compiler.source>
+
+        <maven.compiler.target>23</maven.compiler.target>
+
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
     </properties>
 
 </project>
