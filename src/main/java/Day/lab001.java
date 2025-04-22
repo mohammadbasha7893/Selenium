@@ -10,6 +10,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 class lab001 {
@@ -24,8 +26,8 @@ class lab001 {
             wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@class='margin-right']"))).click();
             wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@class='green']"))).click();
 
-            WebElement searchBox = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@class='searchField']")));
-            searchBox.sendKeys("ropinirole hydrochloride" + Keys.ENTER);
+          /*  WebElement searchBox = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@class='searchField']")));
+            searchBox.sendKeys("ropinirole hydrochloride" + Keys.ENTER);*/
 
             driver.findElement(By.xpath("//div[@class='title cropper']")).click();
 
@@ -58,11 +60,27 @@ class lab001 {
 
             String jurisdiction = json.optString("cc", "N/A");
             String publicationNumber = json.getJSONObject("numbers").optString("publication", "N/A");
+            String publicationDate = json.getJSONObject("dates").optString("publication", "N/A");
             String filingDate = json.getJSONObject("dates").optString("filing", "N/A");
+
 
             System.out.println("Jurisdiction: " + jurisdiction);
             System.out.println("Publication Number: " + publicationNumber);
+            System.out.println("publicationDate " + publicationDate);
             System.out.println("Filing Date: " + filingDate);
+
+            Instant pubDate=Instant.parse(publicationDate);
+
+
+
+            Instant fileDate=Instant.parse(filingDate);
+
+
+
+            long daysBetween = ChronoUnit.DAYS.between(fileDate, pubDate);
+
+
+            System.out.println("Difference between Filing Date and Publication Date:" + daysBetween +"days");
 
         } catch (Exception e) {
             e.printStackTrace();
