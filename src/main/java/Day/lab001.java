@@ -48,10 +48,10 @@ class lab001 {
                     .replace("&nbsp;", " ")
                     .replace("(", "")
                     .replace(")", "")
-                    .replaceAll("^[^\\{]*", "") // Remove any non-JSON prefix
-                    .replaceAll(",\\s*\" freeText\"", "\"freeText\"") // Clean comma issue
-                    .replaceAll(",\\s*\\)", "") // Remove trailing commas
-                    .replaceAll("\\)\\s*$", "") // Remove closing parentheses at the end
+                    .replaceAll("^[^\\{]*", "") 
+                    .replaceAll(",\\s*\" freeText\"", "\"freeText\"") 
+                    .replaceAll(",\\s*\\)", "") 
+                    .replaceAll("\\)\\s*$", "") 
                     .trim();
 
             JSONObject json = new JSONObject(jsonLike);
