@@ -1,10 +1,7 @@
 package Day;
 
 import org.json.JSONObject;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -16,6 +13,9 @@ import java.util.List;
 
 class lab001 {
     public static void main(String[] args) {
+
+        args = new String[]{"ropinirole hydrochloride"};
+
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
 
@@ -26,8 +26,10 @@ class lab001 {
             wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@class='margin-right']"))).click();
             wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@class='green']"))).click();
 
-          /*  WebElement searchBox = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@class='searchField']")));
-            searchBox.sendKeys("ropinirole hydrochloride" + Keys.ENTER);*/
+            WebElement searchBox = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@class='searchField']")));
+
+
+            searchBox.sendKeys(args[0] + Keys.ENTER);
 
             driver.findElement(By.xpath("//div[@class='title cropper']")).click();
 
@@ -50,10 +52,10 @@ class lab001 {
                     .replace("&nbsp;", " ")
                     .replace("(", "")
                     .replace(")", "")
-                    .replaceAll("^[^\\{]*", "") 
-                    .replaceAll(",\\s*\" freeText\"", "\"freeText\"") 
-                    .replaceAll(",\\s*\\)", "") 
-                    .replaceAll("\\)\\s*$", "") 
+                    .replaceAll("^[^\\{]*", "")
+                    .replaceAll(",\\s*\" freeText\"", "\"freeText\"")
+                    .replaceAll(",\\s*\\)", "")
+                    .replaceAll("\\)\\s*$", "")
                     .trim();
 
             JSONObject json = new JSONObject(jsonLike);
@@ -63,24 +65,17 @@ class lab001 {
             String publicationDate = json.getJSONObject("dates").optString("publication", "N/A");
             String filingDate = json.getJSONObject("dates").optString("filing", "N/A");
 
-
             System.out.println("Jurisdiction: " + jurisdiction);
             System.out.println("Publication Number: " + publicationNumber);
-            System.out.println("publicationDate " + publicationDate);
+            System.out.println("Publication Date: " + publicationDate);
             System.out.println("Filing Date: " + filingDate);
 
-            Instant pubDate=Instant.parse(publicationDate);
-
-
-
-            Instant fileDate=Instant.parse(filingDate);
-
-
+            Instant pubDate = Instant.parse(publicationDate);
+            Instant fileDate = Instant.parse(filingDate);
 
             long daysBetween = ChronoUnit.DAYS.between(fileDate, pubDate);
 
-
-            System.out.println("Difference between Filing Date and Publication Date:" + daysBetween +"days");
+            System.out.println("Difference between Filing Date and Publication Date: " + daysBetween + " days");
 
         } catch (Exception e) {
             e.printStackTrace();
